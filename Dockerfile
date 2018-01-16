@@ -64,7 +64,7 @@ python3 python3-pip \
 php5-fpm php-pear php5-mysql php5-gd \
 php5-odbc php5-curl php5-cli php5-imap \
 php5-oauth php5-imagick php5-memcached \
-mailutils ssmtp\
+mailutils ssmtp \
 blackfire-agent blackfire-php
 
 ###############################
@@ -101,12 +101,18 @@ RUN echo "root=devops@igcsoftware.com" >> /etc/ssmtp/ssmtp.conf && \
     echo "FromLineOverride=YES" >> /etc/ssmtp/ssmtp.conf
 
 ###############################
+# Make Directorys             #
+###############################
+
+RUN mkdir /var/www
+RUN mkdir /app/
+
+###############################
 # Copy config Files           #
 ###############################
 
 COPY config/nginx.conf /etc/nginx/nginx.conf
 COPY config/www.conf /etc/php5/fpm/pool.d/www.conf
-COPY config/id_rsa /root/.ssh/id_rsa
 COPY config/cacert.pem /etc/ssl/crt/cacert.pem
 COPY config/crontabFile /app/crontabFile
 COPY config/emptyCrontabFile /app/emptyCrontabFile
@@ -119,12 +125,7 @@ COPY config/crt/movecrm.com.key /etc/ssl/crt/movecrm.com.key
 COPY config/vhostHQ /etc/nginx/sites-available/default
 COPY config/blackfire.ini /etc/blackfire/agent
 COPY config/memcached.ini /etc/php5/mods-available/memcached.ini
-
-###############################
-# Make Directorys             #
-###############################
-
-RUN mkdir /var/www
+COPY config/docker-entrypoint.sh /app/docker-entrypoint.sh
 
 #################################################
 #################################################
@@ -138,7 +139,7 @@ RUN mkdir /var/www
 # move the repo               #
 ###############################
 
-COPY MoveHQ /var/www/movehq
+COPY moveHQ /var/www/movehq
 WORKDIR /var/www/movehq
 
 #################################################
