@@ -10,10 +10,16 @@ MAINTAINER MoveHQ <devops@movehq.com>
 #################################################
 
 ###############################
-# Actual URL                  #
+# MAIN DOMAIN                 #
 ###############################
 
-ARG URL
+ARG MAIN_DOMAIN
+
+###############################
+# VIRTUAL_HOST                #
+###############################
+
+ARG VIRTUAL_HOST
 
 #################################################
 #################################################
@@ -88,7 +94,8 @@ RUN sudo php5enmod oauth
 # Set Variables               #
 ###############################
 
-ENV VIRTUAL_HOST $URL
+ENV VIRTUAL_HOST $VIRTUAL_HOST
+ENV MAIN_DOMAIN $MAIN_DOMAIN
 
 #################################
 # Set xterm and configure ssmtp #
