@@ -128,6 +128,12 @@ COPY config/blackfire.ini /etc/blackfire/agent
 COPY config/memcached.ini /etc/php5/mods-available/memcached.ini
 COPY config/docker-entrypoint.sh /app/docker-entrypoint.sh
 
+#####################################
+# set docker entrypoint permissions #
+#####################################
+
+RUN chmod -R 755 /app/
+
 #################################################
 #################################################
 #####                                       #####
