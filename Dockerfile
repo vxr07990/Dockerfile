@@ -140,8 +140,8 @@ COPY config/docker-entrypoint.sh /app/docker-entrypoint.sh
 # move the repo               #
 ###############################
 
-COPY moveHQ /var/www/movehq
-WORKDIR /var/www/movehq
+COPY moveHQ /var/www/moveHQ
+WORKDIR /var/www/moveHQ
 
 #################################################
 #################################################
@@ -155,7 +155,7 @@ WORKDIR /var/www/movehq
 # add movehq to path            #
 #################################
 
-ENV PATH=$PATH:/var/www/movehq
+ENV PATH=$PATH:/var/www/moveHQ
 
 #################################
 # Expose Ports                  #
