@@ -106,6 +106,7 @@ RUN echo "root=devops@igcsoftware.com" >> /etc/ssmtp/ssmtp.conf && \
 
 RUN mkdir /var/www
 RUN mkdir /app/
+RUN mkdir /EFS/
 
 ###############################
 # Copy config Files           #
