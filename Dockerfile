@@ -128,6 +128,7 @@ COPY config/blackfire.ini /etc/blackfire/agent
 COPY config/memcached.ini /etc/php5/mods-available/memcached.ini
 COPY config/docker-entrypoint.sh /app/docker-entrypoint.sh
 COPY config/.env /var/www/moveHQ/.env
+COPY config/master_script.sh /app/master_script.sh
 
 #####################################
 # set docker entrypoint permissions #
@@ -162,7 +163,7 @@ WORKDIR /var/www/moveHQ
 # add movehq to path            #
 #################################
 
-ENV PATH=$PATH:/var/www/moveHQ
+ENV PATH=$PATH:/app/
 
 #################################
 # Expose Ports                  #
