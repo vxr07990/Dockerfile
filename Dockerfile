@@ -76,6 +76,12 @@ RUN sudo php5enmod curl
 RUN sudo php5enmod imagick
 RUN sudo php5enmod oauth
 
+###############################
+# Install composer            #
+###############################
+
+RUN curl -sS https://getcomposer.org/installer | sudo php -- --install-dir=/usr/local/bin --filename=composer
+
 #################################################
 #################################################
 #####                                       #####
@@ -158,6 +164,12 @@ WORKDIR /var/www/moveHQ
 #####                                       #####
 #################################################
 #################################################
+
+#################################
+# install composer dependencies #
+#################################
+
+RUN cd /var/www/moveHQ && composer install --no-dev
 
 #################################
 # add movehq to path            #
