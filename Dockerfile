@@ -169,7 +169,7 @@ WORKDIR /var/www/moveHQ
 # set PS1 because docker breaks it #
 ####################################
 
-RUN echo " " >> /root/.bashrc && echo "export PS1=\"[\\u@\\h] > \";" >> /root/.bashrc
+RUN echo " " >> /root/.bashrc && echo "export PS1=\"[\\u@\\h:\\w] > \";" >> /root/.bashrc
 
 #################################
 # install composer dependencies #
