@@ -171,6 +171,12 @@ WORKDIR /var/www/moveHQ
 
 RUN echo " " >> /root/.bashrc && echo "export PS1=\"[\\u@\\h:\\w] > \";" >> /root/.bashrc
 
+####################################
+# set the REV in the footer. #
+####################################
+
+RUN cd /var/www/moveHQ && TEMPREV="FOOTER = 'Rev $(git rev-parse HEAD | cut -c1-10)'" && echo $TEMPREV >> .env
+
 #################################
 # install composer dependencies #
 #################################
